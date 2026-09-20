@@ -252,6 +252,7 @@ export default {
     editTitle: "Edit Feeding",
     logTitle: "Log Feeding",
     amount: "Amount ({unit})",
+    unit: "Amount unit",
     save: "Save Feeding",
     update: "Update Feeding",
     types: {

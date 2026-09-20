@@ -252,6 +252,7 @@ export default {
     editTitle: "Fütterung bearbeiten",
     logTitle: "Fütterung erfassen",
     amount: "Menge ({unit})",
+    unit: "Mengeneinheit",
     save: "Fütterung speichern",
     update: "Fütterung aktualisieren",
     types: {

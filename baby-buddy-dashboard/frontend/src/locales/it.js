@@ -252,6 +252,7 @@ export default {
     editTitle: "Modifica Pappa",
     logTitle: "Registra Pappa",
     amount: "Quantità ({unit})",
+    unit: "Unità di quantità",
     save: "Salva Pappa",
     update: "Aggiorna Pappa",
     types: {
