@@ -36,6 +36,7 @@ export default {
 
   action: {
     feeding: "Feeding",
+    pumping: "Pumping",
     sleep: "Sleep",
     diaper: "Diaper",
     tummy: "Tummy",
@@ -98,6 +99,7 @@ export default {
 
   overview: {
     feedings: "Feedings",
+    pumping: "Pumping",
     sleep: "Sleep",
     diapers: "Diapers",
     tummyTime: "Tummy Time",
@@ -108,10 +110,12 @@ export default {
     sessionToday: "{count} session today",
     sessionsToday: "{count} sessions today",
     recentFeedings: "Recent Feedings",
+    recentPumping: "Recent Pumping",
     sleepPattern: "Sleep Pattern",
     diaperChanges: "Diaper Changes",
     tummyTimeTitle: "Tummy Time",
     noFeedingsToday: "No feedings recorded today",
+    noPumpingToday: "No pumping recorded today",
     noSleepRecorded: "No sleep recorded",
     noDiaperChangesToday: "No diaper changes recorded today",
     noTummyTimeToday: "No tummy time recorded today",
@@ -264,6 +268,14 @@ export default {
       parentFed: "Parent Fed",
       selfFed: "Self Fed",
     },
+  },
+
+  pumpingForm: {
+    editTitle: "Edit Pumping",
+    logTitle: "Log Pumping",
+    amount: "Amount ({unit})",
+    save: "Save Pumping",
+    update: "Update Pumping",
   },
 
   sleepForm: {

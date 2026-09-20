@@ -36,6 +36,7 @@ export default {
 
   action: {
     feeding: "Pappa",
+    pumping: "Tiralatte",
     sleep: "Sonno",
     diaper: "Pannolino",
     tummy: "Pancia",
@@ -98,6 +99,7 @@ export default {
 
   overview: {
     feedings: "Pappe",
+    pumping: "Tiralatte",
     sleep: "Sonno",
     diapers: "Pannolini",
     tummyTime: "Tempo Pancia",
@@ -108,10 +110,12 @@ export default {
     sessionToday: "{count} sessione oggi",
     sessionsToday: "{count} sessioni oggi",
     recentFeedings: "Pappe Recenti",
+    recentPumping: "Sessioni Tiralatte Recenti",
     sleepPattern: "Andamento del Sonno",
     diaperChanges: "Cambi Pannolino",
     tummyTimeTitle: "Tempo Pancia",
     noFeedingsToday: "Nessuna pappa registrata oggi",
+    noPumpingToday: "Nessuna sessione tiralatte registrata oggi",
     noSleepRecorded: "Nessun sonno registrato",
     noDiaperChangesToday: "Nessun cambio pannolino registrato oggi",
     noTummyTimeToday: "Nessun tempo pancia registrato oggi",
@@ -264,6 +268,14 @@ export default {
       parentFed: "Imboccato dal Genitore",
       selfFed: "Da Solo",
     },
+  },
+
+  pumpingForm: {
+    editTitle: "Modifica Tiralatte",
+    logTitle: "Registra Tiralatte",
+    amount: "Quantità ({unit})",
+    save: "Salva Tiralatte",
+    update: "Aggiorna Tiralatte",
   },
 
   sleepForm: {

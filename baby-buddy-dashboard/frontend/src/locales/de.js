@@ -36,6 +36,7 @@ export default {
 
   action: {
     feeding: "Füttern",
+    pumping: "Abpumpen",
     sleep: "Schlaf",
     diaper: "Windel",
     tummy: "Bauch",
@@ -98,6 +99,7 @@ export default {
 
   overview: {
     feedings: "Fütterungen",
+    pumping: "Abpumpen",
     sleep: "Schlaf",
     diapers: "Windeln",
     tummyTime: "Bauchlage",
@@ -108,10 +110,12 @@ export default {
     sessionToday: "{count} Einheit heute",
     sessionsToday: "{count} Einheiten heute",
     recentFeedings: "Letzte Fütterungen",
+    recentPumping: "Letzte Abpumpvorgänge",
     sleepPattern: "Schlafmuster",
     diaperChanges: "Windelwechsel",
     tummyTimeTitle: "Bauchlage",
     noFeedingsToday: "Heute wurden noch keine Fütterungen erfasst",
+    noPumpingToday: "Heute wurde noch kein Abpumpen erfasst",
     noSleepRecorded: "Noch kein Schlaf erfasst",
     noDiaperChangesToday: "Heute wurden noch keine Windelwechsel erfasst",
     noTummyTimeToday: "Heute wurde noch keine Bauchlage erfasst",
@@ -264,6 +268,14 @@ export default {
       parentFed: "Von Elternteil gefüttert",
       selfFed: "Selbst gegessen",
     },
+  },
+
+  pumpingForm: {
+    editTitle: "Abpumpen bearbeiten",
+    logTitle: "Abpumpen erfassen",
+    amount: "Menge ({unit})",
+    save: "Abpumpen speichern",
+    update: "Abpumpen aktualisieren",
   },
 
   sleepForm: {

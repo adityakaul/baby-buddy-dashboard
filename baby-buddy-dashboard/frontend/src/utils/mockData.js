@@ -369,9 +369,30 @@ function generateMedications(childId, name, dosage, dosageUnit, intervalHours) {
   ];
 }
 
+function generatePumping(childId) {
+  const sessions = [
+    { hours: 2, minutes: 18, amount: 120 },
+    { hours: 7, minutes: 22, amount: 95 },
+  ];
+  return sessions.map((session, index) => {
+    const end = hoursAgo(session.hours);
+    const start = new Date(end.getTime() - session.minutes * 60000);
+    return {
+      id: childId * 100 + index + 1,
+      child: childId,
+      start: isoLocal(start),
+      end: isoLocal(end),
+      duration: duration(0, session.minutes),
+      amount: session.amount,
+      notes: "",
+    };
+  });
+}
+
 function emmaData() {
   return {
     feedings: emmaFeedings(),
+    pumping: generatePumping(1),
     weeklyFeedings: emmaWeeklyFeedings(),
     sleepEntries: emmaSleep(),
     weeklySleep: emmaWeeklySleep(),
@@ -415,6 +436,7 @@ function emmaData() {
 function liamData() {
   return {
     feedings: liamFeedings(),
+    pumping: [],
     weeklyFeedings: liamWeeklyFeedings(),
     sleepEntries: liamSleep(),
     weeklySleep: liamWeeklySleep(),

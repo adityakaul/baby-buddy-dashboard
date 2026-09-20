@@ -28,6 +28,9 @@ import {
   aggregateTummyByDay,
   getEntriesForDay,
   parseDuration,
+  formatDuration,
+  formatTime,
+  timeAgo,
 } from "../utils/formatters";
 import { useUnits } from "../utils/units";
 import { clickableProps } from "../utils/a11y";
@@ -36,7 +39,7 @@ import { useTranslation } from "../locales";
 
 const COLLAPSED_COUNT = 2;
 
-export default function OverviewTab({ childId, demoMode, feedings, weeklyFeedings: weeklyFeedingsRaw, sleepEntries, weeklySleep, changes, tummyTimes, weeklyTummyTimes, onEditEntry }) {
+export default function OverviewTab({ childId, demoMode, feedings, pumping, weeklyFeedings: weeklyFeedingsRaw, sleepEntries, weeklySleep, changes, tummyTimes, weeklyTummyTimes, onEditEntry }) {
   const t = useTranslation();
   const units = useUnits();
   const [expanded, setExpanded] = useState({});
@@ -59,6 +62,7 @@ export default function OverviewTab({ childId, demoMode, feedings, weeklyFeeding
   const tummyByDay = aggregateTummyByDay(weeklyTummyTimes);
 
   const totalFeeding = feedings.reduce((s, f) => s + (f.amount || 0), 0);
+  const totalPumping = pumping.reduce((sum, entry) => sum + (entry.amount || 0), 0);
   const totalSleep = sleepEntries.reduce(
     (s, e) => s + parseDuration(e.duration),
     0
@@ -112,6 +116,15 @@ export default function OverviewTab({ childId, demoMode, feedings, weeklyFeeding
             sub={feedingTimeline[0] ? t("overview.lastSync", { time: feedingTimeline[0].detail }) : undefined}
             color={colors.feeding}
             onClick={() => setShowReport(true)}
+          />
+        </div>
+        <div className="fade-in fade-in-2">
+          <StatCard
+            icon={<Icons.Pump />}
+            label={t("overview.pumping")}
+            value={t("overview.today", { value: `${Math.round(totalPumping)} ${units.volume}` })}
+            sub={t(pumping.length === 1 ? "overview.sessionToday" : "overview.sessionsToday", { count: pumping.length })}
+            color={colors.pumping}
           />
         </div>
         <div className="fade-in fade-in-2">
@@ -231,6 +244,36 @@ export default function OverviewTab({ childId, demoMode, feedings, weeklyFeeding
                   />
                 )}
               </>
+            )}
+          </SectionCard>
+        </div>
+
+        {/* Pumping */}
+        <div className="fade-in fade-in-3">
+          <SectionCard title={t("overview.recentPumping")} icon={<Icons.Pump />} color={colors.pumping}>
+            {pumping.length > 0 ? (
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {(expanded.pumping ? pumping : pumping.slice(0, COLLAPSED_COUNT)).map((entry, index, entries) => (
+                  <div key={entry.id} className="entry-clickable" {...clickableProps(() => onEditEntry?.("pumping", entry))}>
+                    <TimelineItem
+                      time={formatTime(entry.end || entry.start)}
+                      label={`${entry.amount} ${units.volume}`}
+                      detail={`${formatDuration(entry.duration)} · ${timeAgo(entry.end || entry.start)}`}
+                      color={colors.pumping}
+                      isLast={index === entries.length - 1}
+                    />
+                  </div>
+                ))}
+                {pumping.length > COLLAPSED_COUNT && (
+                  <button className="expand-toggle" onClick={() => toggle("pumping")}>
+                    {expanded.pumping ? t("common.showLess") : t("common.showMore", { count: pumping.length - COLLAPSED_COUNT })}
+                  </button>
+                )}
+              </div>
+            ) : (
+              <div style={{ color: "var(--text-dim)", fontSize: 13, textAlign: "center", padding: 20 }}>
+                {t("overview.noPumpingToday")}
+              </div>
             )}
           </SectionCard>
         </div>
