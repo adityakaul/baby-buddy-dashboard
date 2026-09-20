@@ -89,7 +89,7 @@ export default function PumpingForm({ childId, timerId, entry, onDone, onClose }
             value={amount}
             onChange={(event) => setAmount(event.target.value)}
             min="0.1"
-            step="1"
+            step="0.1"
             required
           />
         </FormField>

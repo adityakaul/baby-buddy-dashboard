@@ -55,17 +55,19 @@ describe("api request building", () => {
   it("supports creating, updating, and deleting pumping entries", async () => {
     fetch
       .mockResolvedValueOnce(jsonResponse({ id: 7 }))
-      .mockResolvedValueOnce(jsonResponse({ id: 7, amount: 120 }))
+      .mockResolvedValueOnce(jsonResponse({ id: 7, amount: 120.5 }))
       .mockResolvedValueOnce({ ok: true, status: 204 });
 
-    await api.createPumping({ child: 1, amount: 100 });
-    await api.updatePumping(7, { amount: 120 });
+    await api.createPumping({ child: 1, amount: 100.5 });
+    await api.updatePumping(7, { amount: 120.5 });
     await api.deletePumping(7);
 
     expect(fetch.mock.calls[0][0]).toBe("./api/baby-buddy/pumping/");
     expect(fetch.mock.calls[0][1]).toMatchObject({ method: "POST" });
+    expect(fetch.mock.calls[0][1].body).toBe(JSON.stringify({ child: 1, amount: 100.5 }));
     expect(fetch.mock.calls[1][0]).toBe("./api/baby-buddy/pumping/7/");
     expect(fetch.mock.calls[1][1]).toMatchObject({ method: "PATCH" });
+    expect(fetch.mock.calls[1][1].body).toBe(JSON.stringify({ amount: 120.5 }));
     expect(fetch.mock.calls[2][0]).toBe("./api/baby-buddy/pumping/7/");
     expect(fetch.mock.calls[2][1]).toMatchObject({ method: "DELETE" });
   });
