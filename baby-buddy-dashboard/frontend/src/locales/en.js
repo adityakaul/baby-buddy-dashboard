@@ -88,6 +88,7 @@ export default {
   chartMetric: {
     amount: "amount",
     count: "feedings",
+    sessions: "sessions",
     hours: "hours",
     minutes: "minutes",
     weight: "weight",
@@ -121,6 +122,7 @@ export default {
     noTummyTimeToday: "No tummy time recorded today",
     perSession: "per session",
     feedingsLegend: "Feedings",
+    pumpingSessionsLegend: "Sessions",
   },
 
   growth: {
@@ -211,6 +213,7 @@ export default {
 
   dayActivities: {
     feedingsTitle: "Feedings - {day}",
+    pumpingTitle: "Pumping - {day}",
     sleepTitle: "Sleep Sessions - {day}",
     tummyTitle: "Tummy Time - {day}",
     activitiesTitle: "Activities - {day}",

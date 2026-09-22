@@ -308,6 +308,7 @@ export default function App() {
             feedings={data.feedings}
             pumping={data.pumping}
             weeklyFeedings={data.weeklyFeedings}
+            weeklyPumping={data.weeklyPumping}
             sleepEntries={data.sleepEntries}
             weeklySleep={data.weeklySleep}
             changes={data.changes}

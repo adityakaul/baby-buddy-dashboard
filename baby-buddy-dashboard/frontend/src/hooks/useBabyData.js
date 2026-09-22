@@ -25,6 +25,7 @@ export function useBabyData() {
   const [feedings, setFeedings] = useState([]);
   const [pumping, setPumping] = useState([]);
   const [weeklyFeedings, setWeeklyFeedings] = useState([]);
+  const [weeklyPumping, setWeeklyPumping] = useState([]);
   const [sleepEntries, setSleepEntries] = useState([]);
   const [weeklySleep, setWeeklySleep] = useState([]);
   const [changes, setChanges] = useState([]);
@@ -75,6 +76,7 @@ export function useBabyData() {
         feedingsRes,
         pumpingRes,
         weeklyFeedingsRes,
+        weeklyPumpingRes,
         sleepRes,
         weeklySleepRes,
         changesRes,
@@ -95,6 +97,7 @@ export function useBabyData() {
         api.getFeedings({ child: c, start_min: todayMin, start_max: todayMax, limit: 100, ordering: "-start" }),
         api.getPumping({ child: c, start_min: todayMin, start_max: todayMax, limit: 100, ordering: "-start" }),
         api.getFeedings({ child: c, start_min: weekMin, limit: 200, ordering: "-start" }),
+        api.getPumping({ child: c, start_min: weekMin, limit: 200, ordering: "-start" }),
         api.getSleep({ child: c, start_min: sleepMin, limit: 100, ordering: "-start" }),
         api.getSleep({ child: c, start_min: weekMin, limit: 200, ordering: "-start" }),
         api.getChanges({ child: c, date_min: todayMin, date_max: todayMax, limit: 100, ordering: "-time" }),
@@ -116,6 +119,7 @@ export function useBabyData() {
       setFeedings(feedingsRes.results || []);
       setPumping(pumpingRes.results || []);
       setWeeklyFeedings(weeklyFeedingsRes.results || []);
+      setWeeklyPumping(weeklyPumpingRes.results || []);
       setSleepEntries(sleepRes.results || []);
       setWeeklySleep(weeklySleepRes.results || []);
       setChanges(changesRes.results || []);
@@ -180,6 +184,7 @@ export function useBabyData() {
     setFeedings(mock.feedings);
     setPumping(mock.pumping);
     setWeeklyFeedings(mock.weeklyFeedings);
+    setWeeklyPumping(mock.weeklyPumping);
     setSleepEntries(mock.sleepEntries);
     setWeeklySleep(mock.weeklySleep);
     setChanges(mock.changes);
@@ -210,6 +215,7 @@ export function useBabyData() {
       setFeedings(mock.feedings);
       setPumping(mock.pumping);
       setWeeklyFeedings(mock.weeklyFeedings);
+      setWeeklyPumping(mock.weeklyPumping);
       setSleepEntries(mock.sleepEntries);
       setWeeklySleep(mock.weeklySleep);
       setChanges(mock.changes);
@@ -263,6 +269,7 @@ export function useBabyData() {
     feedings,
     pumping,
     weeklyFeedings,
+    weeklyPumping,
     sleepEntries,
     weeklySleep,
     changes,

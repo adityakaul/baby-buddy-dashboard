@@ -88,6 +88,7 @@ export default {
   chartMetric: {
     amount: "Menge",
     count: "Fütterungen",
+    sessions: "Einheiten",
     hours: "Stunden",
     minutes: "Minuten",
     weight: "Gewicht",
@@ -121,6 +122,7 @@ export default {
     noTummyTimeToday: "Heute wurde noch keine Bauchlage erfasst",
     perSession: "pro Einheit",
     feedingsLegend: "Fütterungen",
+    pumpingSessionsLegend: "Einheiten",
   },
 
   growth: {
@@ -211,6 +213,7 @@ export default {
 
   dayActivities: {
     feedingsTitle: "Fütterungen - {day}",
+    pumpingTitle: "Abpumpen - {day}",
     sleepTitle: "Schlafeinheiten - {day}",
     tummyTitle: "Bauchlage - {day}",
     activitiesTitle: "Aktivitäten - {day}",

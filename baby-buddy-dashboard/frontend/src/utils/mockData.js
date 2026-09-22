@@ -389,11 +389,33 @@ function generatePumping(childId) {
   });
 }
 
+function generateWeeklyPumping(childId) {
+  const entries = [...generatePumping(childId)];
+  for (let day = 1; day <= 6; day++) {
+    for (let session = 0; session < 2; session++) {
+      const end = daysAgo(day);
+      end.setHours(8 + session * 8, 15);
+      const minutes = 18 + ((day + session) % 6);
+      entries.push({
+        id: childId * 1000 + day * 10 + session,
+        child: childId,
+        start: isoLocal(new Date(end.getTime() - minutes * 60000)),
+        end: isoLocal(end),
+        duration: duration(0, minutes),
+        amount: 85 + ((day + session) % 4) * 10,
+        notes: "",
+      });
+    }
+  }
+  return entries;
+}
+
 function emmaData() {
   return {
     feedings: emmaFeedings(),
     pumping: generatePumping(1),
     weeklyFeedings: emmaWeeklyFeedings(),
+    weeklyPumping: generateWeeklyPumping(1),
     sleepEntries: emmaSleep(),
     weeklySleep: emmaWeeklySleep(),
     changes: emmaChanges(),
@@ -438,6 +460,7 @@ function liamData() {
     feedings: liamFeedings(),
     pumping: [],
     weeklyFeedings: liamWeeklyFeedings(),
+    weeklyPumping: [],
     sleepEntries: liamSleep(),
     weeklySleep: liamWeeklySleep(),
     changes: liamChanges(),

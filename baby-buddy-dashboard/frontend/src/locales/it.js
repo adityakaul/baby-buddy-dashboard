@@ -88,6 +88,7 @@ export default {
   chartMetric: {
     amount: "quantità",
     count: "pappe",
+    sessions: "sessioni",
     hours: "ore",
     minutes: "minuti",
     weight: "peso",
@@ -121,6 +122,7 @@ export default {
     noTummyTimeToday: "Nessun tempo pancia registrato oggi",
     perSession: "per sessione",
     feedingsLegend: "Pappe",
+    pumpingSessionsLegend: "Sessioni",
   },
 
   growth: {
@@ -211,6 +213,7 @@ export default {
 
   dayActivities: {
     feedingsTitle: "Pappe - {day}",
+    pumpingTitle: "Tiralatte - {day}",
     sleepTitle: "Sessioni di Sonno - {day}",
     tummyTitle: "Tempo Pancia - {day}",
     activitiesTitle: "Attività - {day}",
